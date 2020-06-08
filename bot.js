@@ -22,6 +22,16 @@ client.on('message', message => {
 
 });
 
+client.on('message', message => {
+
+    if (message.content === 'hello pokemonbot') {
+
+       message.reply('hello message.author.username');
+
+       }
+
+});
+
  
 
 // THIS  MUST  BE  THIS  WAY
