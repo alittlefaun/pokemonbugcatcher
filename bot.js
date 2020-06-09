@@ -25,7 +25,7 @@ client.on('message', message => {
        }
   if (message.content === 'hello pokemonbot') {
 
-       message.reply('hello');
+       message.reply('hello');}
 
 
 });
