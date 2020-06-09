@@ -7,7 +7,7 @@ const client = new Discord.Client();
 client.on('ready', () => {
 
     console.log('I am ready!');
- message.send('I am on');
+ reply('I am on');
 
 });
 
