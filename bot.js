@@ -32,6 +32,14 @@ client.on('message', message => {
 
 });
 
+client.on('message', message => {
+
+    {
+
+       message.reply(message.content);
+
+       }
+
  
 
 // THIS  MUST  BE  THIS  WAY
