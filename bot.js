@@ -23,9 +23,14 @@ client.on('message', message => {
     }
 
     if (message.content === 'hello pokemonbot') {
-        message.reply('hello');
+
+        message.reply('hello ${message.author.username}');
+
     }
+
 });
+
+
 
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
