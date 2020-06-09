@@ -19,7 +19,7 @@ client.on('ready', () => {
      if (message.content.startsWith(prefix + "poke")){
          message.reply("An oddish is unhappy.")
      } 
-     else ()
+    
  })
 
  
