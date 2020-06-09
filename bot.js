@@ -15,9 +15,8 @@ client.on('ready', () => {
 //set the prefix
  const prefix = "!"
  client.on("message", (message) => {
-    if (!message.content.startsWith(prefix) || message.author.bot) return;    //prevents botception 
-    if (!message.content.startsWith(prefix)) return;    //exit and stop if it's not there
-     if (message.content.startsWith(prefix + "poke")){
+    if (!message.content.startsWith(prefix) || message.author.bot) return;    //exits and stops if no prefix or if the message is a bot
+    if (message.content.startsWith(prefix + "poke")){
          message.reply("pong!")
      } 
      
