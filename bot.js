@@ -18,9 +18,9 @@ client.on('ready', () => {
 
 client.on('message', message => {
 
-    if (message.content === 'ping') {
+    if (message.content === 'pong') {
 
-       message.reply('pong');
+       message.reply('ping');
 
        }
   if (message.content === 'hello pokemonbot') {
