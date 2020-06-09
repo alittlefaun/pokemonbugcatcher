@@ -11,15 +11,7 @@ client.on('ready', () => {
 
 });
 
-//set the prefix
- const prefix = "!"
- client.on("message", (message) => {
-     if (!message.content.startsWith(prefix)) return;
-     if (message.content.startsWith(prefix + "poke")){
-         message.reply("pong!")
-     } 
-     else ()
- })
+
 
  
 
