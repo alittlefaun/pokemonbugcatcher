@@ -15,22 +15,12 @@ client.on("message", (message) => {
     if (message.content.startsWith(prefix + "poke")) {
         message.reply("You poked the oddish and he is now sad.");
     }
-})
 
-client.on('message', message => {
-    if (message.content === 'pong') {
-        message.reply('ping');
-    }
-
-    if (message.content === 'hello pokemonbot') {
-
-        message.reply('hello ${message.author.username}');
-
+    if (message.content.toLowerCase() === 'hello') {
+        message.channel.send(`Hello bug catcher ${message.author.username}!`);
     }
 
 });
-
-
 
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
