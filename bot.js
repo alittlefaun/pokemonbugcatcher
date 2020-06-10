@@ -17,7 +17,7 @@ client.on('ready', () => {
  client.on("message", (message) => {
     if (!message.content.startsWith(prefix) || message.author.bot) return;    //exits and stops if no prefix or if the message is a bot
     if (message.content.startsWith(prefix + "poke")){
-         message.reply("pong!")
+         message.reply("You poked the oddish and he is now saw.")
      } 
      
  })
