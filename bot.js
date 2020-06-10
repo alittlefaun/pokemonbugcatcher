@@ -16,6 +16,10 @@ client.on("message", (message) => {
     //exits and stops if no prefix or if the message is a bot
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
+    if (message.content.startsWith(prefix + "menu")) {
+        message.reply.bold("These are my menu commands.");
+    }
+
     if (message.content.startsWith(prefix + "poke")) {
         message.reply("You poked the oddish and he is now sad.");
     }
