@@ -31,8 +31,8 @@ client.on("message", (message) => {
     //!start
     if (message.content.startsWith(prefix + "start")) {
         message.reply("Here is an egg for you.");
-        const eggImage = new Discord.MessageAttachment('https://i.imgur.com/WRCr8c3.png');
-        message.channel.send(`${message.author},`, eggImage);
+        const attachment = new Discord.MessageAttachment('https://i.imgur.com/WRCr8c3.png');
+        message.channel.send(attachment);
     }
     //!poke
     if (message.content.startsWith(prefix + "poke")) {
