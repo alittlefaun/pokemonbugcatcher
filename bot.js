@@ -17,7 +17,11 @@ client.on("message", (message) => {
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
     if (message.content.startsWith(prefix + "menu")) {
-        message.reply("These are my menu commands. \n second line." );
+        message.reply("These are my menu commands. 
+        \n !menu - brings up my menu.
+        \n !start - brings your bug catching adventure.
+        \n !incubator - checks on the status of your egg incubator
+        \n !team - lists out your six active pokemon" );
     }
 
     if (message.content.startsWith(prefix + "poke")) {
