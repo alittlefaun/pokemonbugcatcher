@@ -1,9 +1,13 @@
 const Discord = require('discord.js');
-//extracts class attachment
-const {Client, Attachment} = require('discord.js');
-//const client = new Discord.Client();
-const bot = new Client();
+//extracts the required classes from the discord.js module
+const {Client, MessageAttachment} = require('discord.js');
+//creates an instance of a Discord client
+const client = new Discord.Client();
 
+/**
+ * The ready event is vital, it means that only _after_ this will your bot start reacting to information
+ * received from Discord
+ */
 client.on('ready', () => {
     console.log('I am ready!');
     client.channels.get("361298665689710592").send("I AM ALIVE");
@@ -26,7 +30,7 @@ client.on("message", (message) => {
     //!start
     if (message.content.startsWith(prefix + "start")) {
         message.reply("Here is an egg for you.");
-        const eggImage = new Attachment('https://i.imgur.com/WRCr8c3.png');
+        const eggImage = new MessageAttachment('https://i.imgur.com/WRCr8c3.png');
         message.reply(eggImage);
     }
     //!poke
