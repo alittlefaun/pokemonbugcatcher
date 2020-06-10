@@ -32,7 +32,7 @@ client.on("message", (message) => {
     if (message.content.startsWith(prefix + "start")) {
         message.reply("Here is an egg for you.");
         const eggImage = new MessageAttachment('https://i.imgur.com/WRCr8c3.png');
-        message.reply(eggImage);
+        message.channel.send(`${message.author},`, eggImage);
     }
     //!poke
     if (message.content.startsWith(prefix + "poke")) {
