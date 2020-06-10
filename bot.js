@@ -18,10 +18,17 @@ client.on("message", (message) => {
     //exits and stops if no prefix or if the message is a bot
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
+    //brings up menu
     if (message.content.startsWith(prefix + "menu")) {
-        message.reply("These are my menu commands. \n !menu - brings up my menu. \n !start - brings your bug catching adventure. \n !incubator - checks on the status of your egg incubator \n !team - lists out your six active pokemon" );
+        message.reply("These are my menu commands. \n !menu - brings up my menu. \n !start - starts your bug catching adventure. \n !incubator - checks on the status of your egg incubator \n !team - lists out your six active pokemon" );
     }
-
+    //!start
+    if (message.content.startsWith(prefix + "start")) {
+        message.reply("Here is an egg for you.");
+        const eggImage = new Attachment('https://i.imgur.com/WRCr8c3.png');
+        message.reply(eggImage);
+    }
+    //!poke
     if (message.content.startsWith(prefix + "poke")) {
         message.reply("You poked the oddish and he is now sad.");
     }
