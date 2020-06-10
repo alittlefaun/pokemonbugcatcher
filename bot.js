@@ -17,7 +17,7 @@ client.on("message", (message) => {
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
     if (message.content.startsWith(prefix + "menu")) {
-        message.reply.bold("These are my menu commands.");
+        message.reply("These are my menu commands.");
     }
 
     if (message.content.startsWith(prefix + "poke")) {
