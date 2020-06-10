@@ -1,7 +1,8 @@
 const Discord = require('discord.js');
 //extracts class attachment
 const {Client, Attachment} = require('discord.js');
-const client = new Discord.Client();
+//const client = new Discord.Client();
+const bot = new Client();
 
 client.on('ready', () => {
     console.log('I am ready!');
