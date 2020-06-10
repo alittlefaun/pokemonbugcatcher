@@ -2,7 +2,8 @@ const Discord = require('discord.js');
 //extracts the required classes from the discord.js module
 const {Client, MessageAttachment} = require('discord.js');
 //creates an instance of a Discord client
-const client = new Discord.Client();
+//const client = new Discord.Client();
+const client = new Client();
 
 /**
  * The ready event is vital, it means that only _after_ this will your bot start reacting to information
