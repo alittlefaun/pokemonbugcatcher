@@ -10,7 +10,7 @@ client.on('ready', () => {
 const prefix = "!"
 client.on("message", (message) => {
     if (message.content.toLowerCase() === 'hello') {
-        message.channel.send(`Hello bug catcher ${message.author.username}!`);
+        message.channel.send(`Hello bug catcher ${message.author}!`);
     }
 
     //exits and stops if no prefix or if the message is a bot
