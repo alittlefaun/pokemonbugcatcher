@@ -15,16 +15,11 @@ client.on("message", (message) => {
     if (message.content.startsWith(prefix + "poke")) {
         message.reply("You poked the oddish and he is now sad.");
     }
-})
 
-client.on('message', message => {
-    if (message.content === 'pong') {
-        message.reply('ping');
+    if (message.content.toLowerCase() === 'hello') {
+        message.channel.send(`Hello bug catcher ${message.author.username}!`);
     }
 
-    if (message.content === 'hello pokemonbot') {
-        message.reply('hello');
-    }
 });
 
 // THIS  MUST  BE  THIS  WAY
