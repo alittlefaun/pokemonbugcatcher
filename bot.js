@@ -28,18 +28,10 @@ client.on("message", (message) => {
     if (message.content.startsWith(prefix + "menu")) {
         message.reply("These are my menu commands. \n !menu - brings up my menu. \n !start - starts your bug catching adventure. \n !incubator - checks on the status of your egg incubator \n !team - lists out your six active pokemon" );
     }
-    //copy and paste code
-    if (message.content === '!rip') {
-        // Create the attachment using MessageAttachment
-        const attachment = new MessageAttachment('https://i.imgur.com/w3duR07.png');
-        // Send the attachment in the message channel with a content
-        message.channel.send(`${message.author},`, attachment);
-      }
-    
     //!start
     if (message.content.startsWith(prefix + "start")) {
         message.reply("Here is an egg for you.");
-        const eggImage = new MessageAttachment('https://i.imgur.com/WRCr8c3.png');
+        const eggImage = new Discord.MessageAttachment('https://i.imgur.com/WRCr8c3.png');
         message.channel.send(`${message.author},`, eggImage);
     }
     //!poke
