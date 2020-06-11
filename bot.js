@@ -42,7 +42,7 @@ client.on("message", (message) => {
             message: message.content
         }
         fs.writeFile("./bugcatchers.json", JSON.stringify (client.bugcatchers, null, 4), err => {
-            if (err) throw err;
+            //if (err) throw err;
             message.channel.send ("We are now documenting your adventure.");
         });
     }
