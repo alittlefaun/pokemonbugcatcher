@@ -3,6 +3,9 @@ const Discord = require('discord.js');
 const { Client, MessageAttachment } = require('discord.js');
 //creates an instance of a Discord client
 const client = new Discord.Client();
+//fs module provides an API for interacting with file system (json)
+const fs = require("fs");
+client.bugcatchers = require("./bugcatchers.json")
 
 
 /**
@@ -35,6 +38,13 @@ client.on("message", (message) => {
         message.reply("Here is an egg for you.");
         const attachment = new MessageAttachment('https://i.imgur.com/WRCr8c3.png');
         message.channel.send(attachment);
+        client.bugcatchers [message.author.username] = {
+            message: message.content
+        }
+        fs.writeFile("./bugcatcher.json", JSON.stringify (client.msgs, null, 4), err=> {
+            if (err) throw err;
+            message.channel.send ("We are now documenting your adventure.");
+        });
     }
     //!poke
     if (message.content.startsWith(prefix + "poke")) {
