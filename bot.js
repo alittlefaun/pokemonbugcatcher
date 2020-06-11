@@ -11,7 +11,9 @@ const client = new Discord.Client();
  */
 client.on('ready', () => {
     console.log('I am ready!');
-    client.channels.fetch("361298665689710592").send("I AM ALIVE");
+    client.channels.fetch("361298665689710592")
+        .then((defaultChannel)=>{defaultChannel.send("I AM ALIVE")});
+        .catch(console.error);
 });
 
 //set the prefix
