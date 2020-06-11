@@ -41,7 +41,7 @@ client.on("message", (message) => {
         client.bugcatchers [message.author.username] = {
             message: message.content
         }
-        fs.writeFile("./bugcatcher.json", JSON.stringify (client.msgs, null, 4), err=> {
+        fs.writeFile("./bugcatcher.json", JSON.stringify (client.bugcatchers, null, 4), err => {
             if (err) throw err;
             message.channel.send ("We are now documenting your adventure.");
         });
