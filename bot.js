@@ -47,7 +47,7 @@ client.on("message", (message) => {
             message.channel.send(`Number generated is ${x}.`);;
           }
         
-        
+        genTypeOfEgg();
         
         message.reply("Here is an egg for you.");
         const attachment = new MessageAttachment('https://i.imgur.com/WRCr8c3.png');
