@@ -55,7 +55,7 @@ client.on("message", (message) => {
         client.bugcatchers [message.author.id] = {
             "trainer name": message.author.username
         }
-        );
+        ;
     }
     //!poke
     if (message.content.startsWith(prefix + "poke")) {
