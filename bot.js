@@ -54,7 +54,7 @@ client.on("message", (message) => {
         }
 
         else {
-        message.reply("Here is an egg for you.");
+        message.reply("Here is an egg for you. Number is ${eggNum}");
         const attachment = new MessageAttachment('https://i.imgur.com/WRCr8c3.png');
         message.channel.send(attachment);
     }
