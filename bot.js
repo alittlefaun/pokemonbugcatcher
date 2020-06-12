@@ -1,5 +1,5 @@
 //takes the .env package and calls the function config on it which loads all the environment variables; REMOVE FROM UPLOADED BUILD
-//require('dotenv').config();  //REMOVEREMOVEREMOVE
+require('dotenv').config();  //REMOVEREMOVEREMOVE
 const Discord = require('discord.js');
 //extracts the required classes from the discord.js module
 const { Client, MessageAttachment } = require('discord.js');
@@ -42,17 +42,22 @@ client.on("message", (message) => {
     }
     //!start
     if (message.content.startsWith(prefix + "start")) {
-        function genTypeOfEgg() {
+        const eggNum = function genTypeOfEgg() {
             var x = Math.floor((Math.random() * 10) + 1);
-            message.channel.send(`Number generated is ${x}.`);;
+            return x;
           }
-        
-        genTypeOfEgg();
-        
+            
+        if (eggNum === 7){
+            message.reply("Here is an egg for you. Oooo, it looks special!");
+        const attachment = new MessageAttachment('https://i.imgur.com/m5g7pEe.png');
+        message.channel.send(attachment);
+        }
+
+        else (
         message.reply("Here is an egg for you.");
         const attachment = new MessageAttachment('https://i.imgur.com/WRCr8c3.png');
         message.channel.send(attachment);
-        
+        )
     }
     //!poke
     if (message.content.startsWith(prefix + "poke")) {
