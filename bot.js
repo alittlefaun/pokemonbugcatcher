@@ -1,5 +1,5 @@
 //takes the .env package and calls the function config on it which loads all the environment variables; REMOVE FROM UPLOADED BUILD
-//require('dotenv').config();  //REMOVEREMOVEREVMOE
+//require('dotenv').config();  //REMOVEREMOVEREMOVE
 const Discord = require('discord.js');
 //extracts the required classes from the discord.js module
 const { Client, MessageAttachment } = require('discord.js');
@@ -26,7 +26,7 @@ const prefix = "!"
 client.on("message", (message) => {
         
     if (message.content.toLowerCase() === 'hello') {
-        message.channel.send(`Hello bug catcher ${message.author}!`);
+        message.channel.send(`Hello ${message.author}! Please type <!menu> if you would be interested in caring for Pokemon eggs.`);
     }
 
     //exits and stops if no prefix or if the message is a bot
@@ -36,12 +36,19 @@ client.on("message", (message) => {
     if (message.content.startsWith(prefix + "menu")) {
         message.reply("These are my menu commands.\n" +
             "!menu - brings up my menu.\n" +
-            "!start - starts your bug catching adventure.\n" +
+            "!start - take up responsibility as an egg nurturer.\n" +
             "!incubator - checks on the status of your egg incubator\n" +
-            "!team - lists out your six active pokemon"); 
+            "!other - other command???"); 
     }
     //!start
     if (message.content.startsWith(prefix + "start")) {
+        function genTypeOfEgg() {
+            var x = Math.floor((Math.random() * 10) + 1);
+            message.channel.send(`Number generated is ${x}.`);;
+          }
+        
+        
+        
         message.reply("Here is an egg for you.");
         const attachment = new MessageAttachment('https://i.imgur.com/WRCr8c3.png');
         message.channel.send(attachment);
