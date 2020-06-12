@@ -52,10 +52,7 @@ client.on("message", (message) => {
         message.reply("Here is an egg for you.");
         const attachment = new MessageAttachment('https://i.imgur.com/WRCr8c3.png');
         message.channel.send(attachment);
-        client.bugcatchers [message.author.id] = {
-            "trainer name": message.author.username
-        }
-        ;
+        
     }
     //!poke
     if (message.content.startsWith(prefix + "poke")) {
