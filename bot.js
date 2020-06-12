@@ -7,7 +7,7 @@ const { Client, MessageAttachment } = require('discord.js');
 const client = new Discord.Client();
 //fs module provides an API for interacting with file system (json)
 const fs = require("fs");
-client.bugcatchers = require("./bugcatchers.json")
+
 
 
 /**
@@ -55,10 +55,7 @@ client.on("message", (message) => {
         client.bugcatchers [message.author.id] = {
             "trainer name": message.author.username
         }
-        fs.writeFile("./bugcatchers.json", JSON.stringify (client.bugcatchers, null, 4), err => {
-            if (err) console.log(err);
-            message.channel.send ("We are now documenting your adventure.");
-        });
+        );
     }
     //!poke
     if (message.content.startsWith(prefix + "poke")) {
