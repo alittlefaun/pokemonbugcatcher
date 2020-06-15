@@ -1,0 +1,42 @@
+{
+    "010": {
+        "name": "caterpie",
+        "imageUrl": "https://i.imgur.com/wlngI8Z.png",
+        "hatchTime": 10000
+    },
+    "011": {
+        "name": "metapod",
+        "imageUrl": "https://i.imgur.com/oCcSN2l.png",
+        "hatchTime": 10000
+    },
+    "012": {
+        "name": "butterfree",
+        "imageUrl": "https://i.imgur.com/LAGVcwV.png",
+        "hatchTime": 10000
+    },
+    "265": {
+        "name": "wurmple",
+        "imageUrl": "https://i.imgur.com/JdLFmvp.png",
+        "hatchTime": 10000
+    },
+    "266": {
+        "name": "silcoon",
+        "imageUrl": "https://i.imgur.com/9Fg1yUw.png",
+        "hatchTime": 10000
+    },
+    "267": {
+        "name": "beautifly",
+        "imageUrl": "https://i.imgur.com/gk8UsFt.png",
+        "hatchTime": 10000
+    },
+    "268": {
+        "name": "cascoon",
+        "imageUrl": "https://i.imgur.com/PXAZkNC.png",
+        "hatchTime": 10000
+    },
+    "269": {
+        "name": "dustox",
+        "imageUrl": "https://i.imgur.com/0AUZTrG.png",
+        "hatchTime": 10000
+    },
+}

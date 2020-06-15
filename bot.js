@@ -7,6 +7,8 @@ const { Client, MessageAttachment } = require('discord.js');
 const client = new Discord.Client();
 //fs module provides an API for interacting with file system (json)
 const fs = require("fs");
+//makes availablePokemon.json available
+const availablePokemon = require("./availablePokemon.json");
 
 
 
@@ -82,6 +84,9 @@ client.on("message", (message) => {
     //!poke
     if (message.content.startsWith(prefix + "poke")) {
         message.reply("You poked the oddish and he is now sad.");
+    }
+    if (message.content.startsWith(prefix + "test")) {
+        message.reply(availablePokemon);
     }
 });
 
