@@ -7,6 +7,40 @@ const { Client, MessageAttachment } = require('discord.js');
 const client = new Discord.Client();
 //fs module provides an API for interacting with file system (json)
 const fs = require("fs");
+//makes availablePokemon.json available
+const availablePokemon = require("./availablePokemon.json");
+//creates an array containing the pokemon number of ONLY pokemon who can hatch
+let availableHatchablePokemon = [];
+for (i = 0; i < Object.keys(availablePokemon).length; i++) {
+    if (availablePokemon[Object.keys(availablePokemon)[i]].canHatch == true) {
+        availableHatchablePokemon.push(Object.keys(availablePokemon)[i]);
+    }
+}
+
+function hatch(message, isShiny) {
+    //returns a random index number for the array of availableHatchablePokemon
+    const randomIndex = Math.floor(Math.random() * availableHatchablePokemon.length);
+    //retuns the number of the pokemon randomly chosen from availableHatchablePokemon, this will be used as a KEY
+    const randomPokemonNumber = availableHatchablePokemon[randomIndex];
+    //returns the value (an object) that has the characters linked with the KEY
+    const pokemonChar = availablePokemon[randomPokemonNumber];
+
+    console.log(pokemonChar);
+
+    //returns the values linked with each key of the randomly selected pokemon 
+    const name = pokemonChar.name;
+    const url = isShiny ? pokemonChar.shinyImageUrl : pokemonChar.imageUrl;
+    const hatchTime = pokemonChar.hatchTime;
+    const shinyUrl = pokemonChar.shinyImageUrl;
+    const shininess = isShiny ? "shiny" : "";
+    const msg = `Congratulations! A ${shininess} baby ${name} popped out!*`
+
+    const attachedImage = new MessageAttachment(url);
+    message.reply(msg, attachedImage)
+        .catch((rejectionReason) => { console.log(rejectionReason) });
+
+};
+
 
 
 
@@ -42,46 +76,42 @@ client.on("message", (message) => {
     }
     //!start
     if (message.content.startsWith(prefix + "start")) {
-        const eggNum = Math.floor((Math.random() * 10) + 1);
-        const availablePokemon = [10, 265];
+        const shinyFactor = Math.random();
+        console.log(`The shiny factor is ${shinyFactor}.`);
 
-        function hatch() {
-            const pokemonType = availablePokemon[Math.floor(Math.random() * availablePokemon.length)];
-            if (pokemonType == 10) {
-                const plainCaterpie = new MessageAttachment('https://i.imgur.com/wlngI8Z.png');
-                message.reply("Congratulations! A baby caterpie popped out!", plainCaterpie)
-                    .catch((rejectionReason) => { console.log(rejectionReason) });
-            }
-            else if (pokemonType == 265) { message.reply("Wurmple!"); }
-            else { message.reply("Nothing hatched....") }
-        };
-
-        if (eggNum >= 7) {
+        if (shinyFactor > 0.7) {
             const shinyEgg = new MessageAttachment('https://i.imgur.com/m5g7pEe.png');
-            message.reply("Here is an egg for you. Oooo, it looks special!", shinyEgg)
+            message.reply("Here is an egg for you. Oooo, it looks special!*", shinyEgg)
                 .catch((rejectionReason) => { console.log(rejectionReason) });
             //message.channel.send(shinyEgg).catch((rejectionReason) => {console.log(rejectionReason)});
             setTimeout(function () {
-                message.reply("Congratulations, your egg has hatched!");
-                hatch();
+                //message.reply("Congratulations, your egg has hatched!");
+                hatch(message, true);
             }, 10000);
-
         }
         else {
             const plainEgg = new MessageAttachment('https://i.imgur.com/WRCr8c3.png');
-            message.reply("Here is an egg for you. Number is " + eggNum, plainEgg)
+            message.reply("Here is an egg for you. Please take good care of it.*", plainEgg)
                 .catch((rejectionReason) => { console.log(rejectionReason) });
             //message.channel.send(plainEgg).catch((rejectionReason) => {console.log(rejectionReason)});
             setTimeout(function () {
-                message.reply("Congratulations, your egg has hatched!");
-                hatch();
+                //message.reply("Congratulations, your egg has hatched!");
+                hatch(message, false);
             }, 10000);
-
         }
     }
+
     //!poke
     if (message.content.startsWith(prefix + "poke")) {
         message.reply("You poked the oddish and he is now sad.");
+    }
+
+    //!test
+    if (message.content.startsWith(prefix + "test")) {
+        message.reply(availablePokemon);
+        console.log(availablePokemon);
+        //returns # of keys (different Pokemon) available in availablePokemon.json
+        console.log(Object.keys(availablePokemon).length);
     }
 });
 
