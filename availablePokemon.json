@@ -1,42 +1,58 @@
 {
     "010": {
         "name": "caterpie",
-        "imageUrl": "https://i.imgur.com/wlngI8Z.png",
+        "imageUrl": "https://i.imgur.com/Wt8WqtZ.png",
+        "shinyImageUrl": "https://i.imgur.com/Rzu0hAu.png",
+        "canHatch": true,
         "hatchTime": 10000
     },
     "011": {
         "name": "metapod",
-        "imageUrl": "https://i.imgur.com/oCcSN2l.png",
+        "imageUrl": "https://i.imgur.com/avpC4cq.png",
+        "shinyImageUrl": "https://i.imgur.com/MmjF2O6.png",
+        "canHatch": false,
         "hatchTime": 10000
     },
     "012": {
         "name": "butterfree",
-        "imageUrl": "https://i.imgur.com/LAGVcwV.png",
+        "imageUrl": "https://i.imgur.com/bqbD74B.png",
+        "shinyImageUrl": "https://i.imgur.com/BQhxqJ6.png",
+        "canHatch": false,
         "hatchTime": 10000
     },
     "265": {
         "name": "wurmple",
-        "imageUrl": "https://i.imgur.com/JdLFmvp.png",
+        "imageUrl": "https://i.imgur.com/p2Y7U2j.png",
+        "shinyImageUrl": "https://i.imgur.com/cxUiLok.png",
+        "canHatch": true,
         "hatchTime": 10000
     },
     "266": {
         "name": "silcoon",
-        "imageUrl": "https://i.imgur.com/9Fg1yUw.png",
+        "imageUrl": "https://i.imgur.com/YXDFHrf.png",
+        "shinyImageUrl": "https://i.imgur.com/3WNez7J.png",
+        "canHatch": false,
         "hatchTime": 10000
     },
     "267": {
         "name": "beautifly",
-        "imageUrl": "https://i.imgur.com/gk8UsFt.png",
+        "imageUrl": "https://i.imgur.com/qUsxMGW.png",
+        "shinyImageUrl": "https://i.imgur.com/b59DNEq.png",
+        "canHatch": false,
         "hatchTime": 10000
     },
     "268": {
         "name": "cascoon",
-        "imageUrl": "https://i.imgur.com/PXAZkNC.png",
+        "imageUrl": "https://i.imgur.com/2lon7LM.png",
+        "shinyImageUrl": "https://i.imgur.com/xXQRC0F.png",
+        "canHatch": false,
         "hatchTime": 10000
     },
     "269": {
         "name": "dustox",
-        "imageUrl": "https://i.imgur.com/0AUZTrG.png",
+        "imageUrl": "https://i.imgur.com/iK9XKkB.png",
+        "shinyImageUrl": "https://i.imgur.com/BA1xxoj.png",
+        "canHatch": false,
         "hatchTime": 10000
     }
 }
