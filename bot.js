@@ -1,5 +1,5 @@
 //takes the .env package and calls the function config on it which loads all the environment variables; REMOVE FROM UPLOADED BUILD
-//require('dotenv').config();  //REMOVEREMOVEREMOVE
+require('dotenv').config();  //REMOVEREMOVEREMOVE
 const Discord = require('discord.js');
 //extracts the required classes from the discord.js module
 const { Client, MessageAttachment } = require('discord.js');
@@ -7,6 +7,8 @@ const { Client, MessageAttachment } = require('discord.js');
 const client = new Discord.Client();
 //fs module provides an API for interacting with file system (json)
 const fs = require("fs");
+//makes jokes.json available
+const jokes = require("./jokes.json");
 //makes availablePokemon.json available
 const availablePokemon = require("./availablePokemon.json");
 //creates an array containing the pokemon number of ONLY pokemon who can hatch
@@ -105,7 +107,16 @@ client.on("message", (message) => {
     if (message.content.startsWith(prefix + "poke")) {
         message.reply("You poked the oddish and he is now sad.");
     }
-
+    //!joke
+    if (message.content.startsWith(prefix + "joke")) {
+        const arrayOfKeysInJokes = Object.keys(jokes);
+        //returns a random key between 1 (inclusive) and the # of keys (inclusive) in jokes.json
+        const randomKeyForJokes = Math.floor(Math.random() * arrayOfKeysInJokes.length) + 1;
+        console.log(randomKeyForJokes);
+        //returns the value associated with the randomly generated key for jokes.json
+        const jokeMsg = jokes[randomKeyForJokes];
+        message.reply(`\n ${jokeMsg}`);
+    }
     //!test
     if (message.content.startsWith(prefix + "test")) {
         message.reply(availablePokemon);
