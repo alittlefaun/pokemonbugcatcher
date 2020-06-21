@@ -11,6 +11,7 @@ const fs = require("fs");
 const jokes = require("./jokes.json");
 //makes availablePokemon.json available
 const availablePokemon = require("./availablePokemon.json");
+const { cpuUsage } = require('process');
 //creates an array containing the pokemon number of ONLY pokemon who can hatch
 let availableHatchablePokemon = [];
 for (i = 0; i < Object.keys(availablePokemon).length; i++) {
@@ -116,6 +117,10 @@ let commands = {
     "test": {
         "help": "test command",
         "command": commandMenu
+    },
+    "clash time": {
+        "help": "allows user to convert clash start time to own time zone",
+        "command": commandClashTime
     }
 }
 
@@ -129,6 +134,18 @@ function commandMenu(message) {
         msg += `${prefix}${cmd} - ${commands[cmd].help}\n`;
     }
     message.channel.send(msg);
+}
+
+function commandClashTime(message) {
+    let startTimeHour = 8;       //Monica needs to manually input start time
+    let startTimeMinute = 15
+    message.channel.send(`The start time for clash is ${startTimeHour}:${startTimeMinute} CST.`);
+    message.channel.send(`The start time for clash for TaiwanBobatea is ${startTimeHour - 2}:${startTimeMinute} PST.`);
+    message.channel.send(`The start time for clash for KillChosen is ${startTimeHour + 1}:${startTimeMinute} EST.`)
+
+
+    console.log(`This is the message: ${message}`);
+
 }
 
 function hatch(message, isShiny) {
@@ -179,34 +196,7 @@ client.on("message", (message) => {
     if (cmd in commands) {
         commands[cmd].command(message);
     }
-    // TODO: @raine410, please implement these functions in the new command structure... plz?
     /*
-    //!start
-    if (message.content.startsWith(prefix + "start")) {
-        const shinyFactor = Math.random();
-        console.log(`The shiny factor is ${shinyFactor}.`);
-
-        if (shinyFactor > 0.7) {
-            const shinyEgg = new MessageAttachment('https://i.imgur.com/m5g7pEe.png');
-            message.reply("Here is an egg for you. Oooo, it looks special!*", shinyEgg)
-                .catch((rejectionReason) => { console.log(rejectionReason) });
-            //message.channel.send(shinyEgg).catch((rejectionReason) => {console.log(rejectionReason)});
-            setTimeout(function () {
-                //message.reply("Congratulations, your egg has hatched!");
-                hatch(message, true);
-            }, 10000);
-        }
-        else {
-            const plainEgg = new MessageAttachment('https://i.imgur.com/WRCr8c3.png');
-            message.reply("Here is an egg for you. Please take good care of it.*", plainEgg)
-                .catch((rejectionReason) => { console.log(rejectionReason) });
-            //message.channel.send(plainEgg).catch((rejectionReason) => {console.log(rejectionReason)});
-            setTimeout(function () {
-                //message.reply("Congratulations, your egg has hatched!");
-                hatch(message, false);
-            }, 10000);
-        }
-    }
     //!test
     if (message.content.startsWith(prefix + "test")) {
         message.reply(availablePokemon);
