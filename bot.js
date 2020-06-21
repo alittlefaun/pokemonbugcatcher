@@ -67,6 +67,33 @@ function commandPoke(message) {
     message.reply(`you poked the oddish, and he is ${oddishStatus}`, attachment);
 }
 
+
+function commandStart(message) {
+    const shinyFactor = Math.random();
+    console.log(`The shiny factor is ${shinyFactor}.`);
+
+    if (shinyFactor > 0.7) {
+        const shinyEgg = new MessageAttachment('https://i.imgur.com/m5g7pEe.png');
+        message.reply("Here is an egg for you. Oooo, it looks special!*", shinyEgg)
+            .catch((rejectionReason) => { console.log(rejectionReason) });
+        //message.channel.send(shinyEgg).catch((rejectionReason) => {console.log(rejectionReason)});
+        setTimeout(function () {
+            //message.reply("Congratulations, your egg has hatched!");
+            hatch(message, true);
+        }, 10000);
+    }
+    else {
+        const plainEgg = new MessageAttachment('https://i.imgur.com/WRCr8c3.png');
+        message.reply("Here is an egg for you. Please take good care of it.*", plainEgg)
+            .catch((rejectionReason) => { console.log(rejectionReason) });
+        //message.channel.send(plainEgg).catch((rejectionReason) => {console.log(rejectionReason)});
+        setTimeout(function () {
+            //message.reply("Congratulations, your egg has hatched!");
+            hatch(message, false);
+        }, 10000);
+    }
+}
+
 //set the prefix
 const prefix = "!"
 let commands = {
@@ -84,7 +111,7 @@ let commands = {
     },
     "start": {
         "help": "take up responsibility as an egg nurturer",
-        "command": commandMenu,
+        "command": commandStart,
     },
     "test": {
         "help": "test command",
@@ -127,6 +154,7 @@ function hatch(message, isShiny) {
     message.reply(msg, attachedImage)
         .catch((rejectionReason) => { console.log(rejectionReason) });
 };
+
 
 /**
  * The ready event is vital, it means that only _after_ this will your bot start reacting to information
