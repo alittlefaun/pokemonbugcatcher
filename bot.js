@@ -118,9 +118,9 @@ let commands = {
         "help": "test command",
         "command": commandMenu
     },
-    "clash time": {
+    "clash": {
         "help": "allows user to convert clash start time to own time zone",
-        "command": commandClashTime
+        "command": commandClash
     }
 }
 
@@ -134,6 +134,24 @@ function commandMenu(message) {
         msg += `${prefix}${cmd} - ${commands[cmd].help}\n`;
     }
     message.channel.send(msg);
+}
+
+/*  Example commands *can* be:
+    clash settime 8:15
+    clash notify OR clash remind
+    clash add jungle summonerName
+    clash remove adc
+ */
+function commandClash(message, args) {
+    if (args[0] == 'time') {
+        commandClashTime();
+    }
+    if (args[0] == 'set') {
+
+    }
+    if (args[0] == 'add') { //adds team member to notify
+
+    }
 }
 
 function commandClashTime(message) {
@@ -192,9 +210,25 @@ client.on("message", (message) => {
     //exits and stops if no prefix or if the message is a bot
     if (!message.content.startsWith(prefix) || message.author.bot) return;
     // assume all commands are just prefix + command
+    // `!clash time` => cmd = 'clash time'
+    // `!set 8:00` => cmd = 'set 8:00'
+    // but `!set 8:00` => cmd = 'set', arg1 = `8:00`
+    // enables commands[cmd].command(message, arg1, arg2, arg3, ..., argn); //use .length (strings/arrays)
+    // better practice commands[cmd].command(message, args); -> args is an array of arguments
     const cmd = message.content.slice(1); // get rid of the prefix.
+    const sep = ' '; // separator
+    let index = cmd.indexOf(sep);
+    const args = [];
+    while (index != -1) {
+        args.push(cmd.slice(0, index));
+        cmd = cmd.slice(index + 1);
+        index = cmd.indexOf(sep);
+    }
+    args.push(cmd);
+    cmd = args.shift();
+
     if (cmd in commands) {
-        commands[cmd].command(message);
+        commands[cmd].command(message, args);
     }
     /*
     //!test
