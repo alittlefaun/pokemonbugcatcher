@@ -12,6 +12,7 @@ const jokes = require("./jokes.json");
 //makes availablePokemon.json available
 const availablePokemon = require("./availablePokemon.json");
 const { cpuUsage } = require('process');
+const poke = require("./command-poke.js");
 //creates an array containing the pokemon number of ONLY pokemon who can hatch
 let availableHatchablePokemon = [];
 for (i = 0; i < Object.keys(availablePokemon).length; i++) {
@@ -35,39 +36,6 @@ function commandJoke(message) {
     const jokeMsg = jokes[arrayOfKeysInJokes[randomKeyForJokes]];
     message.channel.send(jokeMsg);
 }
-
-/**
- * 'poke' Command function. Stores all poke events, removing them after a minute has
- * passed. Replies to user with caretaker's reaction based on number of stored pokes.
- */
-let pokeTimestamps = [];
-function commandPoke(message) {
-    let timestamp = Date.now();
-    const minInMilli = 60000; // minutes in milliseconds
-    const madThreshold = 2;
-    const rageThreshold = 4;
-
-    pokeTimestamps.filter(ts => ts < timestamp - minInMilli);
-    pokeTimestamps.push(timestamp);
-
-    let pokesPerMinute = pokeTimestamps.length;
-    let oddishStatus = " is now sad.";
-    let attachmentUrl = 'https://vignette.wikia.nocookie.net/legendsofthemultiuniverse/images/9/90/Oddish_sad.jpg';
-
-    if (pokesPerMinute > madThreshold) {
-        oddishStatus = "getting angry...";
-        attachmentUrl = 'https://vignette.wikia.nocookie.net/legendsofthemultiuniverse/images/6/63/Screenshot_2019-02-26_oddish_-_Google_Search.png';
-    }
-
-    if (pokesPerMinute > rageThreshold) {
-        oddishStatus = "enraged! Watch out!"
-        attachmentUrl = 'https://vignette.wikia.nocookie.net/legendsofthemultiuniverse/images/f/f5/609355abc432f86446a7b615b28e2229cabac0f6_hq.gif';
-    }
-
-    const attachment = new Discord.MessageAttachment(attachmentUrl);
-    message.reply(`you poked the oddish, and he is ${oddishStatus}`, attachment);
-}
-
 
 function commandStart(message) {
     const shinyFactor = Math.random();
@@ -98,6 +66,7 @@ function commandStart(message) {
 //set the prefix
 const prefix = "!"
 let commands = {
+    ...poke, // https://stackoverflow.com/a/46223766 - Spread syntax!
     "joke": {
         "help": "tells a random League of Legends joke",
         "command": commandJoke
@@ -105,10 +74,6 @@ let commands = {
     "menu": {
         "help": "brings up my menu",
         "command": commandMenu
-    },
-    "poke": {
-        "help": "poke the oddish for a reaction",
-        "command": commandPoke
     },
     "start": {
         "help": "take up responsibility as an egg nurturer",
@@ -123,6 +88,8 @@ let commands = {
         "command": commandClash
     }
 }
+commands = Object.fromEntries(Object.entries(commands).sort());
+console.log(commands);
 
 /**
  * 'menu' Command function. Prints all commands in `commands` object
@@ -136,6 +103,7 @@ function commandMenu(message) {
     message.channel.send(msg);
 }
 
+//TODO: @raine410 Move clash commands to seperate file
 /*  Example commands *can* be:
     clash settime 8:15
     clash notify OR clash remind
@@ -215,9 +183,11 @@ client.on("message", (message) => {
     // but `!set 8:00` => cmd = 'set', arg1 = `8:00`
     // enables commands[cmd].command(message, arg1, arg2, arg3, ..., argn); //use .length (strings/arrays)
     // better practice commands[cmd].command(message, args); -> args is an array of arguments
-    const cmd = message.content.slice(1); // get rid of the prefix.
+    let cmd = message.content.slice(1); // get rid of the prefix.
     const sep = ' '; // separator
     let index = cmd.indexOf(sep);
+    // constant reference to an array, but the array is still mutable (changeable)
+    // args can be reassigned, but elements can be changed.
     const args = [];
     while (index != -1) {
         args.push(cmd.slice(0, index));
