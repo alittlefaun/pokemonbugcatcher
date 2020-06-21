@@ -19,6 +19,12 @@ for (i = 0; i < Object.keys(availablePokemon).length; i++) {
     }
 }
 
+// TODO: Implement improved randomness
+/* Generating non-repeating random jokes
+ * - no repetition until all jokes told
+ * - once all jokes told, sequence of jokes changes
+ * - sequence expires after some timeout (30mins ~ 1hour?)
+ */
 function commandJoke(message) {
     const arrayOfKeysInJokes = Object.keys(jokes);
     //returns a random key between 1 (inclusive) and the # of keys (inclusive) in jokes.json
